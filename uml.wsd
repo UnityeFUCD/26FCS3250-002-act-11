@@ -1,11 +1,56 @@
 @startuml scenario #1
+class Department {
+    - name: String
+    - location: String
+}
 
+class Employee {
+    - id: int
+    - name: String
+    - email: String
+}
+
+class Dependent {
+}
+
+Employee "0..*" --> "0..1" Department : works at
+
+Employee "1" *--> "0..*" Dependent : composition
 @enduml
 
 
 @startuml scenario #2
+class Seller {
+}
+
+class Sale {
+}
+
+class Item {
+}
+
+Seller "1" --> "*" Sale : does
+
+Sale "*" --> "*" Item : contains
 @enduml
 
 
 @startuml scenario #3
+class Course {
+}
+
+class Section {
+}
+
+class Instructor {
+}
+
+class Student {
+}
+
+Course "1" *--> "*" Section : composition
+
+Instructor "1" --> "*" Section : teaches
+
+Section "*" --> "*" Student : enrolls
 @enduml
